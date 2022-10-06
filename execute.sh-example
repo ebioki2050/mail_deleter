@@ -2,6 +2,9 @@
 cd $(dirname ${0})
 
 source ${HOME}/.profile
+
+date_yesterday=$(date --date "Yesterday" +%Y-%m-%d)
+
 export MAILBOX=INBOX
 export ADDRESSOFMAILTODELETE=
 export SUBJECTOFMAILDELETE=
