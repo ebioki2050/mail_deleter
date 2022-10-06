@@ -1,0 +1,11 @@
+#!/bin/bash
+cd $(dirname ${0})
+
+source ${HOME}/.profile
+export MAILBOX=INBOX
+export ADDRESSOFMAILTODELETE=
+export SUBJECTOFMAILDELETE=
+export DATESINCEOFMAILTODELETE=
+export DATEBEFOREOFMAILTODELETE=
+
+python3 main.py
