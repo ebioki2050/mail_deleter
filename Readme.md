@@ -6,6 +6,7 @@
 ## how to exe 
 - build python environment
 - rename execute.sh-example into execute.sh
+- set enviromental variable into ${HOME}/.profile as gmailaddress, googleapppassword
 - input mailbox, address, subject,or date to delete mail in execute.sh
 - execute in bash execute.sh
 
