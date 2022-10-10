@@ -30,8 +30,11 @@ if (len(address_to_delete)>0):
 
 # to get mails by subject 
 if (len(subject_to_delete)>0):
+    print("SUBJECT '{}'".format(subject_to_delete))
+    print("SUBJECT %s" % u"{}".format(subject_to_delete).encode("utf-8"))
+    # status, messages = imap.search("utf-8", 'SUBJECT "2022-10-06 Todo"')
+    # status, messages = imap.search("utf-8", "SUBJECT %s" % u"{}".format(subject_to_delete).encode("utf-8"))
     status, messages = imap.search(None, 'SUBJECT "{}"'.format(subject_to_delete))
-
 # to get mails after a specific date
 if (len(date_since_to_delete)>0):
     status, messages = imap.search(None, 'SINCE "{}"'.format(date_since_to_delete))
@@ -45,15 +48,17 @@ if (len(date_before_to_delete)>0):
 
 
 # convert messages to a list of email_IDs
-messages = messages[0].split(b' ')
-
+# messages = messages[0].split(b' ')
+messages = messages[0].split()
+print(messages)
 for mail in messages:
     _, msg = imap.fetch(mail, "(RFC822)")
     # mark the mail as deleted 
-    imap.store(mail, "+FLAGS", "\\Deleted")
+    # imap.store(mail, "+FLAGS", "\\Deleted")
+    imap.store(mail, "+X-GM-LABELS", "\\Trash")
 
 # permanebtly remove mails that are marked as deleted
-# imap.expunge()
+imap.expunge()
 imap.close()
 imap.logout()
 
