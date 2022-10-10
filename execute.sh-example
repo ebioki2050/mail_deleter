@@ -4,13 +4,16 @@ cd $(dirname ${0})
 source ${HOME}/.profile
 
 
-date_yesterday=$(date --date "Yesterday" +%Y-%m-%d)
+# date_yesterday=$(date --date "Yesterday" +%Y-%m-%d)
+date_yesterday=$(date --date "Yesterday" +%d-%b-%Y)
 
 # avoid to use double-quation("") because imap cannot parse text with the charactor.
 # escape control charactors such as space, backslash, and so on.
+
 export MAILBOX=_me
 export ADDRESSOFMAILTODELETE=
 export SUBJECTOFMAILDELETE=
+# date format 01-JAN-2020
 export DATESINCEOFMAILTODELETE=
 export DATEBEFOREOFMAILTODELETE=${date_yesterday}
 
